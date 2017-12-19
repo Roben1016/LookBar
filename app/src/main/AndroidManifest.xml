@@ -7,6 +7,8 @@
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <!-- 录音 -->
     <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:name=".LookBarApplication"
@@ -36,6 +38,10 @@
         <activity android:name=".mvp.view.book.BookTagActivity"
             android:screenOrientation="portrait"/>
         <activity android:name=".mvp.view.music.MusicDetailActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".mvp.view.AboutActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".TestAidlActivity"
             android:screenOrientation="portrait"/>
     </application>
 

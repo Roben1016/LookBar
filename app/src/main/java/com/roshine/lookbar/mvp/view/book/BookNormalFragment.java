@@ -136,17 +136,14 @@ public class BookNormalFragment extends MvpBaseFragment<ContractUtil.IBookNormal
     @Override
     public void OnItemClick(int position, ViewHolder holder) {
         if(listData != null && position < listData.size()){
-//            Bundle bundle = new Bundle();
-//            bundle.putString("id",listData.get(position).getId());
-//            startActivity(BookDetailActivity.class,bundle);
-
             Pair<View, String> imagePair = Pair.create(holder.getView(R.id.iv_item_book_pic), getString(R.string.transition_name_image));
             Pair<View, String> textPair = Pair.create(holder.getView(R.id.tv_item_book_name), getString(R.string.transition_name_text));
             Pair<View, String> scorePair = Pair.create(holder.getView(R.id.tv_item_book_score), getString(R.string.transition_name_score));
-            ActivityOptionsCompat compat = ActivityOptionsCompat.makeSceneTransitionAnimation(getActivity(), imagePair, textPair,scorePair);
-            Intent intent = new Intent(getActivity(), BookDetailActivity.class);
-            intent.putExtra("id",listData.get(position).getId());
-            ActivityCompat.startActivity(getActivity(), intent, compat.toBundle());
+            Pair<View, String> cardPair = Pair.create(holder.getView(R.id.card_view), getString(R.string.transition_name_card));
+            ActivityOptionsCompat compat = ActivityOptionsCompat.makeSceneTransitionAnimation(getActivity(), imagePair, textPair,scorePair,cardPair);
+            Bundle bundle = new Bundle();
+            bundle.putString("id",listData.get(position).getId());
+            startActivityWithTransname(BookDetailActivity.class,bundle,compat);
         }
 
     }

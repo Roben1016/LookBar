@@ -60,4 +60,14 @@
     <string name="transition_name_image">image</string>
     <string name="transition_name_text">name</string>
     <string name="transition_name_score">score</string>
+    <string name="author_desc">我叫罗帅，一个集帅气和智慧于一身的男子，为人低调奢华有内涵。同时是个安卓小开发仔，热爱编程事业，求知欲望强烈，所以，如果有仁兄喜欢这个项目的话可以和我联系，一起交流一起进步！</string>
+    <string name="email">邮箱：luoshuai_ls@163.com </string>
+    <string name="github">github：https://github.com/Roben1016 </string>
+    <string name="blog">博客：http://www.roshine.xyz </string>
+    <string name="roshine">罗帅</string>
+    <string name="contact_me">联系我：</string>
+    <string name="like">如果觉得别人比你聪明，那你唯一能做的就是比 ta 更努力。</string>
+    <string name="transition_name_author">author</string>
+    <string name="transition_name_genres">genres</string>
+    <string name="transition_name_card">cardview</string>
 </resources>

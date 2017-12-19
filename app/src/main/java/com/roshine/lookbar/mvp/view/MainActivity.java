@@ -105,8 +105,8 @@ public class MainActivity extends BaseActivity {
                     toast("主页");
                     break;
                 case R.id.nav_menu_categories:
-//                        startThActivity(AboutActivity.class);
-                    toast("关于");
+                    startActivity(AboutActivity.class);
+//                    toast("关于");
                     break;
 
                 case R.id.nav_menu_recommend:

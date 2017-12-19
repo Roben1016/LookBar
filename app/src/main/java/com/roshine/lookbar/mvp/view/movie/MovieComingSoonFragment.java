@@ -2,7 +2,10 @@ package com.roshine.lookbar.mvp.view.movie;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.ActivityOptionsCompat;
+import android.support.v4.util.Pair;
 import android.support.v7.widget.LinearLayoutManager;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
@@ -149,7 +152,12 @@ public class MovieComingSoonFragment extends MvpBaseFragment<ContractUtil.IComin
             String id = listData.get(position).getId();
             Bundle bundle = new Bundle();
             bundle.putString("id",id);
-            startActivity(MovieDetailActivity.class,bundle);
+            Pair<View, String> imagePair = Pair.create(holder.getView(R.id.iv_movie_pic), getString(R.string.transition_name_image));
+            Pair<View, String> textPair = Pair.create(holder.getView(R.id.tv_movie_chinese_name), getString(R.string.transition_name_text));
+            Pair<View, String> genresPair = Pair.create(holder.getView(R.id.tv_movie_genres), getString(R.string.transition_name_genres));
+            Pair<View, String> cardPair = Pair.create(holder.getView(R.id.card_view), getString(R.string.transition_name_card));
+            ActivityOptionsCompat compat = ActivityOptionsCompat.makeSceneTransitionAnimation(getActivity(), imagePair, textPair,genresPair,cardPair);
+            startActivityWithTransname(MovieDetailActivity.class,bundle,compat);
         }
     }
 

@@ -1,6 +1,7 @@
 package com.roshine.lookbar.mvp.base;
 
 import android.os.Bundle;
+import android.support.v4.app.ActivityOptionsCompat;
 
 /**
  * @author Roshine
@@ -22,4 +23,7 @@ public interface BaseView {
     void startActivity(Class<?> clz);
     void startActivity(Class<?> clz, Bundle bundle);
     void startActivityForResult(Class<?> cls, Bundle bundle, int requestCode);
+    void startActivityWithTransname(Class<?> cls, Bundle bundle, ActivityOptionsCompat compat);
+    void startActivityForResultWithTransname(Class<?> cls, Bundle bundle,int requestCode, ActivityOptionsCompat compat);
+    void finishActivity();
 }

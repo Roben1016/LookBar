@@ -2,7 +2,10 @@ package com.roshine.lookbar.mvp.view.movie;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.ActivityOptionsCompat;
+import android.support.v4.util.Pair;
 import android.support.v7.widget.GridLayoutManager;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
@@ -13,6 +16,7 @@ import com.roshine.lookbar.mvp.bean.movie.MovieBean;
 import com.roshine.lookbar.mvp.bean.movie.Subjects;
 import com.roshine.lookbar.mvp.contract.ContractUtil;
 import com.roshine.lookbar.mvp.presenter.MovieTop250Presenter;
+import com.roshine.lookbar.mvp.view.music.MusicDetailActivity;
 import com.roshine.lookbar.utils.DisplayUtil;
 import com.roshine.lookbar.utils.ThemeColorUtil;
 import com.roshine.lookbar.wight.recyclerview.base.SimpleRecyclertViewAdater;
@@ -163,9 +167,13 @@ public class MovieTop250Fragment extends MvpBaseFragment<ContractUtil.ITop250Vie
     public void OnItemClick(int position, ViewHolder holder) {
         if(listData != null && position < listData.size()){
             String id = listData.get(position).getId();
+            Pair<View, String> imagePair = Pair.create(holder.getView(R.id.iv_item_movie_pic), getString(R.string.transition_name_image));
+            Pair<View, String> textPair = Pair.create(holder.getView(R.id.tv_item_movie_name), getString(R.string.transition_name_text));
+            Pair<View, String> cardPair = Pair.create(holder.getView(R.id.card_view), getString(R.string.transition_name_card));
+            ActivityOptionsCompat compat = ActivityOptionsCompat.makeSceneTransitionAnimation(getActivity(), imagePair, textPair,cardPair);
             Bundle bundle = new Bundle();
             bundle.putString("id",id);
-            startActivity(MovieDetailActivity.class,bundle);
+            startActivityWithTransname(MovieDetailActivity.class,bundle,compat);
         }
     }
 }

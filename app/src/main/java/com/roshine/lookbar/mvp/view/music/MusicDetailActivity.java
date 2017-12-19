@@ -204,7 +204,7 @@ public class MusicDetailActivity extends MvpBaseActivity<ContractUtil.IMusicDeta
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.iv_back:
-                finish();
+                finishActivity();
                 break;
             case R.id.btn_get_more:
                 if (currentData != null) {

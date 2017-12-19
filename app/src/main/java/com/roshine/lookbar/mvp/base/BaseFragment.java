@@ -2,8 +2,11 @@ package com.roshine.lookbar.mvp.base;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -118,6 +121,31 @@ public abstract class BaseFragment extends Fragment implements BaseView {
             intent.putExtras(bundle);
         }
         startActivityForResult(intent, requestCode);
+    }
+
+    @Override
+    public void startActivityWithTransname(Class<?> cls, Bundle bundle, ActivityOptionsCompat compat) {
+        Intent intent = new Intent();
+        intent.setClass(getActivity(), cls);
+        if (bundle != null) {
+            intent.putExtras(bundle);
+        }
+        ActivityCompat.startActivity(getActivity(), intent, compat.toBundle());
+    }
+
+    @Override
+    public void startActivityForResultWithTransname(Class<?> cls, Bundle bundle, int requestCode, ActivityOptionsCompat compat) {
+        Intent intent = new Intent();
+        intent.setClass(getActivity(), cls);
+        if (bundle != null) {
+            intent.putExtras(bundle);
+        }
+        ActivityCompat.startActivityForResult(getActivity(), intent,requestCode, compat.toBundle());
+    }
+
+    @Override
+    public void finishActivity() {
+        getActivity().supportFinishAfterTransition();
     }
 
     @Override

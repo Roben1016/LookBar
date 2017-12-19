@@ -6,9 +6,18 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Gravity;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
+import android.widget.SeekBar;
+import android.widget.TextView;
 
 import com.roshine.lookbar.R;
+import com.roshine.lookbar.TestAidlActivity;
 import com.roshine.lookbar.constants.Constants;
 import com.roshine.lookbar.mvp.base.BasePageFragment;
 import com.roshine.lookbar.mvp.view.adapter.TabFragmentAdapterV2;
@@ -45,6 +54,8 @@ public class HomeBookFragmen extends BasePageFragment {
     private List<Fragment> fragments = new ArrayList<>();
 
     private TabFragmentAdapterV2 adapter;
+    private TextView textView;
+    private AlertDialog show;
 
     @Override
     protected int getLayoutId() {
@@ -53,7 +64,9 @@ public class HomeBookFragmen extends BasePageFragment {
 
     @Override
     protected void initViewData(Bundle savedInstanceState) {
-        floatingActionButton.setBackgroundTintList(getActivity().getResources().getColorStateList(ThemeColorUtil.getNavigationViewItemColor()));
+        floatingActionButton.setBackgroundTintList(
+                getActivity().getResources().getColorStateList(
+                        ThemeColorUtil.getNavigationViewItemColor()));
         checkDatas();
     }
 
@@ -89,7 +102,7 @@ public class HomeBookFragmen extends BasePageFragment {
     }
 
     private void initTabLayout() {
-        adapter = new TabFragmentAdapterV2(getChildFragmentManager(),listContainerTags);
+        adapter = new TabFragmentAdapterV2(getChildFragmentManager(), listContainerTags);
         viewpager.setAdapter(adapter);
         viewpager.setOffscreenPageLimit(listContainerTags.size());
 
@@ -106,13 +119,13 @@ public class HomeBookFragmen extends BasePageFragment {
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode == GET_TAG_REQUEST_CODE){
-            if(resultCode == AppCompatActivity.RESULT_OK){
+        if (requestCode == GET_TAG_REQUEST_CODE) {
+            if (resultCode == AppCompatActivity.RESULT_OK) {
                 if (data != null) {
                     if (listContainerTags != null && fragments != null) {
                         listContainerTags.clear();
                         fragments.clear();
-                        listContainerTags.addAll((List<String>)data.getSerializableExtra("containerTags"));
+                        listContainerTags.addAll((List<String>) data.getSerializableExtra("containerTags"));
                         adapter.notifyDataSetChanged();
                     }
                 }
@@ -148,5 +161,42 @@ public class HomeBookFragmen extends BasePageFragment {
     @OnClick(R.id.floatingActionButton)
     public void onViewClicked() {
         startActivityForResult(BookTagActivity.class,null,GET_TAG_REQUEST_CODE);
+//        startActivity(TestAidlActivity.class);
+
+//        if (show == null) {
+//            AlertDialog.Builder builder = new AlertDialog.Builder(getActivity(), R.style.AlertDialogThemeV7);
+//            View inflate = LayoutInflater.from(getActivity()).inflate(R.layout.dialog_seekbar, null);
+//            SeekBar seekBar = (SeekBar) inflate.findViewById(R.id.seekbar);
+//            seekBar.setOnSeekBarChangeListener(this);
+//            textView = (TextView) inflate.findViewById(R.id.tv_progress);
+//            builder.setView(inflate);
+//            show = builder.create();
+//            Window window = show.getWindow();
+//            window.setGravity(Gravity.BOTTOM);
+//            //为Window设置动画
+//            window.setWindowAnimations(R.style.CustomDialog);
+//        }
+//        //显示Dialog
+//        show.show();
+//        WindowManager.LayoutParams params = show.getWindow().getAttributes();
+//        params.width = 300;
+//        params.height = 200;
+//        show.getWindow().setAttributes(params);
+
     }
+
+//    @Override
+//    public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+//        textView.setText("进度：" + progress);
+//    }
+//
+//    @Override
+//    public void onStartTrackingTouch(SeekBar seekBar) {
+//
+//    }
+//
+//    @Override
+//    public void onStopTrackingTouch(SeekBar seekBar) {
+//
+//    }
 }

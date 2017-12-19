@@ -2,7 +2,9 @@ package com.roshine.lookbar.mvp.view.music;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.app.Fragment;
+import android.support.v4.util.Pair;
 import android.support.v7.widget.GridLayoutManager;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +19,7 @@ import com.roshine.lookbar.mvp.bean.music.MusicBean;
 import com.roshine.lookbar.mvp.bean.music.Musics;
 import com.roshine.lookbar.mvp.contract.ContractUtil;
 import com.roshine.lookbar.mvp.presenter.MusicNormalPresenter;
+import com.roshine.lookbar.mvp.view.book.BookDetailActivity;
 import com.roshine.lookbar.utils.DisplayUtil;
 import com.roshine.lookbar.utils.LogUtil;
 import com.roshine.lookbar.utils.ThemeColorUtil;
@@ -143,9 +146,15 @@ public class MusicNormalFragment extends MvpBaseFragment<ContractUtil.IMusicNorm
     @Override
     public void OnItemClick(int position, ViewHolder holder) {
         if (listData != null && position < listData.size()) {
+            Pair<View, String> imagePair = Pair.create(holder.getView(R.id.iv_item_music_pic), getString(R.string.transition_name_image));
+            Pair<View, String> textPair = Pair.create(holder.getView(R.id.tv_item_music_name), getString(R.string.transition_name_text));
+            Pair<View, String> authorPair = Pair.create(holder.getView(R.id.tv_item_music_author), getString(R.string.transition_name_author));
+            Pair<View, String> scorePair = Pair.create(holder.getView(R.id.tv_item_music_score), getString(R.string.transition_name_score));
+            Pair<View, String> cardPair = Pair.create(holder.getView(R.id.card_view), getString(R.string.transition_name_card));
+            ActivityOptionsCompat compat = ActivityOptionsCompat.makeSceneTransitionAnimation(getActivity(), imagePair, textPair,authorPair,scorePair,cardPair);
             Bundle bundle = new Bundle();
             bundle.putString("id",listData.get(position).getId());
-            startActivity(MusicDetailActivity.class,bundle);
+            startActivityWithTransname(MusicDetailActivity.class,bundle,compat);
         }
     }
 

@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Window;
 
@@ -110,6 +112,31 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseView
             intent.putExtras(bundle);
         }
         startActivityForResult(intent, requestCode);
+    }
+
+    @Override
+    public void startActivityWithTransname(Class<?> cls, Bundle bundle, ActivityOptionsCompat compat) {
+        Intent intent = new Intent();
+        intent.setClass(this, cls);
+        if (bundle != null) {
+            intent.putExtras(bundle);
+        }
+        ActivityCompat.startActivity(this,intent, compat.toBundle());
+    }
+
+    @Override
+    public void startActivityForResultWithTransname(Class<?> cls, Bundle bundle, int requestCode, ActivityOptionsCompat compat) {
+        Intent intent = new Intent();
+        intent.setClass(this, cls);
+        if (bundle != null) {
+            intent.putExtras(bundle);
+        }
+        ActivityCompat.startActivityForResult(this,intent,requestCode, compat.toBundle());
+    }
+
+    @Override
+    public void finishActivity() {
+        supportFinishAfterTransition();
     }
 
     @Override

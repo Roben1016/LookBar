@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <EditText
+        android:id="@+id/et_a"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"/>
+    <EditText
+        android:id="@+id/et_b"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:inputType="number"/>
+    <TextView
+        android:id="@+id/tv_result"
+        android:layout_width="match_parent"
+        android:layout_height="45dp" />
+    <Button
+        android:id="@+id/btn_result_in"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:text="in"/>
+    <Button
+        android:id="@+id/btn_result_out"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:text="out"/>
+    <Button
+        android:id="@+id/btn_result_inout"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:text="inout"/>
+
+</LinearLayout>

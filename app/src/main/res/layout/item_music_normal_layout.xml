@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/card_view"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:transitionName="@string/transition_name_card"
     android:layout_margin="@dimen/card_view_elevation"
     android:clickable="true"
     android:focusable="true"
@@ -22,7 +24,8 @@
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:scaleType="centerCrop"
-            android:src="@drawable/image_loader_empty" />
+            android:src="@drawable/image_loader_empty"
+            android:transitionName="@string/transition_name_image"/>
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -36,6 +39,7 @@
                 android:layout_height="wrap_content"
                 android:maxLines="1"
                 android:textColor="@color/text_color_normal"
+                android:transitionName="@string/transition_name_text"
                 android:textSize="14sp" />
             <TextView
                 android:id="@+id/tv_item_music_author"
@@ -45,7 +49,8 @@
                 android:maxLines="1"
                 android:textColor="@color/gray_light"
                 android:layout_centerVertical="true"
-                android:textSize="14sp" />
+                android:textSize="14sp"
+                android:transitionName="@string/transition_name_author"/>
 
             <TextView
                 android:id="@+id/tv_item_music_score"
@@ -55,6 +60,7 @@
                 android:ellipsize="end"
                 android:maxLines="1"
                 android:textColor="@color/red_dark"
+                android:transitionName="@string/transition_name_score"
                 android:textSize="13sp" />
         </RelativeLayout>
 
