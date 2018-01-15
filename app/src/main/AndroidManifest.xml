@@ -43,6 +43,8 @@
             android:screenOrientation="portrait"/>
         <activity android:name=".TestAidlActivity"
             android:screenOrientation="portrait"/>
+        <activity android:name=".TestPhotoActivity"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>
