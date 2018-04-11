@@ -21,6 +21,7 @@ import com.roshine.lookbar.mvp.presenter.BookDetailPresenter;
 import com.roshine.lookbar.mvp.view.WebViewActivity;
 import com.roshine.lookbar.utils.DisplayUtil;
 import com.roshine.lookbar.utils.LogUtil;
+import com.roshine.lookbar.utils.StatusBarUtil;
 import com.roshine.lookbar.utils.ThemeColorUtil;
 import com.roshine.lookbar.wight.recyclerview.FullyLinearLayoutManager;
 import com.roshine.lookbar.wight.recyclerview.base.SimpleRecyclertViewAdater;

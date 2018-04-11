@@ -19,6 +19,12 @@ public abstract class BaseToolBarActivity extends BaseActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        StatusBarUtil.setColorBar(this, getResources().getColor(ThemeColorUtil.getThemeColor()));
+        if(setStatusBar()){
+            StatusBarUtil.setColorBar(this, getResources().getColor(ThemeColorUtil.getThemeColor()));
+        }
+    }
+
+    protected boolean setStatusBar(){
+        return true;
     }
 }
